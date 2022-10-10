@@ -1762,7 +1762,7 @@ static int32_t nagra3_do_emm(struct s_reader *reader, EMM_PACKET *ep)
 		memset(emmreq, 0xCC, 0xC0);
 
 		emmreq[ 7] = 0x05;
-		emmreq[ 9] = 0x04;
+		emmreq[ 9] = 0x00;
 		emmreq[10] = reader->ecmheader[0];
 		emmreq[11] = reader->ecmheader[1];
 		emmreq[12] = reader->ecmheader[2];
