@@ -1,9 +1,8 @@
-Index: module-cacheex.c
-===================================================================
---- module-cacheex.c	(revision 11517)
-+++ module-cacheex.c	(working copy)
-@@ -641,6 +641,27 @@
- 			reason, buf_ecm, er->ecm[0], (checkECMD5(er)?"NO":"YES"), er->from_csp ? "csp" : username((er->cacheex_src?er->cacheex_src:er->client)), ll_count(er->csp_lastnodes), er->csp_lastnodes ? cacheex_node_id(remotenodeid): 0);
+diff -Nur oscam-svn-modern-zeroconf-emu-icam-sogno-cak7-smod-ncam-cccam/module-cacheex.c oscam-svn-modern-zeroconf-emu-icam-sogno-cak7-smod-ncam-cccam-cex1/module-cacheex.c
+--- oscam-svn-modern-zeroconf-emu-icam-sogno-cak7-smod-ncam-cccam/module-cacheex.c	2022-12-30 18:47:32.977915175 +0100
++++ oscam-svn-modern-zeroconf-emu-icam-sogno-cak7-smod-ncam-cccam-cex1/module-cacheex.c	2022-12-31 14:35:33.515464287 +0100
+@@ -822,6 +822,27 @@
+ 	return 0;
  }
  
 +// check if sky_ger 64 bit CW has valid checksum bytes and therefore is probably invalid
@@ -30,9 +29,9 @@ Index: module-cacheex.c
  static int32_t cacheex_add_to_cache_int(struct s_client *cl, ECM_REQUEST *er, int8_t csp)
  {
  	if(er->rc >= E_NOTFOUND) { return 0; }
-@@ -693,6 +714,33 @@
- 		}
+@@ -921,6 +942,33 @@
  	}
+ #endif
  
 +	if(caid_is_videoguard(er->caid))
 +	{
@@ -51,7 +50,7 @@ Index: module-cacheex.c
 +				}
 +			}
 +		}
-+	
++
 +		if(cl->typ == 'c' && chk_if_ignore_checksum(er, &cl->account->disablecrccacheex_only_for))
 +		{
 +			if(check_nds_cwex(er))
@@ -64,4 +63,3 @@ Index: module-cacheex.c
  	// Skip check for BISS1 - cw could be indeed zero
  	// Skip check for BISS2 - we use the extended cw, so the "simple" cw is always zero
  	if(chk_is_null_CW(er->cw) && !caid_is_biss(er->caid))
-

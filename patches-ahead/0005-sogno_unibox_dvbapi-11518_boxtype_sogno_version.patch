@@ -1,8 +1,7 @@
-Index: module-dvbapi.c
-===================================================================
---- module-dvbapi.c	(Revision 11518)
-+++ module-dvbapi.c	(Arbeitskopie)
-@@ -354,7 +354,7 @@
+diff -Nur oscam-svn-modern-zeroconf-emu-icam/module-dvbapi.c oscam-svn-modern-zeroconf-emu-icam-sogno/module-dvbapi.c
+--- oscam-svn-modern-zeroconf-emu-icam/module-dvbapi.c	2022-12-30 19:23:46.317945224 +0100
++++ oscam-svn-modern-zeroconf-emu-icam-sogno/module-dvbapi.c	2022-12-30 19:25:43.415112564 +0100
+@@ -352,7 +352,7 @@
  struct s_client *dvbapi_client;
  
  const char *boxdesc[] = { "none", "dreambox", "duckbox", "ufs910", "dbox2", "ipbox", "ipbox-pmt",
@@ -11,7 +10,7 @@ Index: module-dvbapi.c
  
  // when updating devices[BOX_COUNT] make sure to update these index defines
  #define BOX_INDEX_QBOXHD 0
-@@ -1704,12 +1704,19 @@
+@@ -1718,12 +1718,19 @@
  
  							if(!match)
  							{
@@ -35,7 +34,7 @@ Index: module-dvbapi.c
  									}
  								}
  							}
-@@ -2334,20 +2341,41 @@
+@@ -2387,46 +2394,92 @@
  						action != FOUND_STREAMPID_INDEX && action != ADDED_STREAMPID_INDEX &&
  						action != REMOVED_STREAMPID_INDEX)
  					{
@@ -86,7 +85,6 @@ Index: module-dvbapi.c
  						while(curidx != INDEX_INVALID || newidx != INDEX_INVALID)
  						{
  							memset(&ca_pid2, 0, sizeof(ca_pid2));
-@@ -2354,26 +2382,51 @@
  							ca_pid2.pid = streampid;
  							if(curidx != INDEX_INVALID)
  							{
@@ -153,11 +151,10 @@ Index: module-dvbapi.c
  								newidx = INDEX_INVALID; // flag this takeover / new index as handled
  							}
  
-Index: module-dvbapi.h
-===================================================================
---- module-dvbapi.h	(Revision 11518)
-+++ module-dvbapi.h	(Arbeitskopie)
-@@ -41,7 +41,8 @@
+diff -Nur oscam-svn-modern-zeroconf-emu-icam/module-dvbapi.h oscam-svn-modern-zeroconf-emu-icam-sogno/module-dvbapi.h
+--- oscam-svn-modern-zeroconf-emu-icam/module-dvbapi.h	2022-12-30 18:47:13.382386277 +0100
++++ oscam-svn-modern-zeroconf-emu-icam-sogno/module-dvbapi.h	2022-12-30 19:25:43.415112564 +0100
+@@ -42,7 +42,8 @@
  #define BOXTYPE_PC         11
  #define BOXTYPE_PC_NODMX   12
  #define BOXTYPE_SAMYGO     13
@@ -167,4 +164,3 @@ Index: module-dvbapi.h
  #define DMXMD5HASHSIZE     16 // use MD5()
  
  // we store the results of remove_streampid_from_list()
-

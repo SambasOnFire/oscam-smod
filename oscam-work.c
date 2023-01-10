@@ -419,6 +419,7 @@ void *work_thread(void *ptr)
 					if(module->s_peer_idle)
 						{ module->s_peer_idle(cl); }
 					break;
+
 				case ACTION_CLIENT_HIDECARDS:
 				{
 #ifdef CS_ANTICASC
@@ -428,7 +429,6 @@ void *work_thread(void *ptr)
 						if(hidetime)
 						{
 							int32_t hide_count;
-
 							int32_t cardsize;
 							int32_t ii, uu=0;
 							LLIST **sharelist = get_and_lock_sharelist();
