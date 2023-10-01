@@ -260,7 +260,7 @@ static void addemmfilter(struct s_reader *reader, uint8_t *cta_res)
 
 static int32_t ParseDataType(struct s_reader *reader, uint8_t dt, uint8_t *cta_res, uint16_t cta_lr)
 {
-	char ds[11], de[11];
+	char ds[36], de[36];
 
 	switch(dt)
 	{
@@ -460,8 +460,8 @@ static int32_t ParseDataType(struct s_reader *reader, uint8_t dt, uint8_t *cta_r
 					id,
 					chid,
 					0,
-					tier_date(start_date, ds, 11),
-					tier_date(expire_date, de, 11),
+					tier_date(start_date, ds, 36),
+					tier_date(expire_date, de, 36),
 					4,
 					1);
 				rdr_log(reader, "|%04X|%04X    |%s  |%s  |", id, chid, ds, de);
