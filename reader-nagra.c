@@ -624,7 +624,7 @@ static void addProvider(struct s_reader *reader, uint8_t *cta_res)
 static int32_t ParseDataType(struct s_reader *reader, uint8_t dt, uint8_t *cta_res, uint16_t cta_lr)
 {
 	struct nagra_data *csystem_data = reader->csystem_data;
-	char ds[20], de[16];
+	char ds[36], de[36];
 	uint16_t chid;
 
 	switch(dt)
